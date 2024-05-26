@@ -7,8 +7,16 @@ import connectDB from "./db/indexi.js";
 dotenv.config({
   path:'./env'
 })
-connectDB();
+connectDB()
+.then(()=>{
+  app.listen(process.env.PORT || 8000,()=>{
+    console.log(`server is running at port :${process.env.PORT}`);
+  })
+})
+.catch((error)=>{
+  console.log(" monogo connection failed Error",error);
 
+})
 
 
 
